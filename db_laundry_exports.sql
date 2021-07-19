@@ -47,7 +47,7 @@ INSERT INTO `tb_admin` (`id_admin`, `username`, `password`, `nama_admin`, `alama
 (1, 'adib', '1234', 'Sulthonul Adib', 'Lamongan', '085711110347', 'Laki - Laki', '1'),
 (2, 'sulthonul', '1234', 'Sulthonul Adib Fahruddin Ali', 'Lamongan', '085649701341', 'Laki - Laki', '0'),
 (3, 'rijal', '1234', 'Rijal Aldianysah', 'Banyuwangi', '086766666666', 'Laki - laki', '0'),
-(4, 'pepeng', '1234', 'Alviery Bahrizal', 'Bondowoso', '083929382939', 'Laki - laki', '1');
+(4, 'pepeng', '1234', 'Alviery Bahrizal', 'Bondowoso', '083929382939', 'Laki - laki', '1'),
 (5, 'bisma', '1234', 'Wian Adiyatma', 'Jember', '123123123123', 'Laki - laki', '1');
 
 -- --------------------------------------------------------
