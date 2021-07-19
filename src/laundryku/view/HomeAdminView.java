@@ -46,7 +46,7 @@ public class HomeAdminView extends javax.swing.JFrame {
     }
 
     public void setLabelHi(String labelHi) {
-        this.labelHi.setText("Hi, " + labelHi);
+        this.labelHi.setText("Selamat Datang, " + labelHi);
     }
     
     public ButtonGroup getBgJK() {

@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 public class DBConnection {
     private Connection con;
-    private final String url = "jdbc:mysql://localhost:3306/laundry";
+    private final String url = "jdbc:mysql://localhost:3306/laundryku_test";
     private final String username = "root";
     private final String password = "";
     

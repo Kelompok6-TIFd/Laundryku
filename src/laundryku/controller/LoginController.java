@@ -45,9 +45,9 @@ public class LoginController extends MouseAdapter implements ActionListener {
                         view.dispose();
                         String nama = rs.getString(4);
                         String role = rs.getString(8);
-//                        if (role.equals("1"))
-//                            new HomeSuperAdminController(nama);
-//                        else 
+                        if (role.equals("1"))
+                            new HomeSuperAdminController(nama);
+                        else 
                             new HomeAdminController(nama);
                     } else {
                         JOptionPane.showMessageDialog(view, "User tidak ditemukan", 
