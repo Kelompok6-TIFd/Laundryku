@@ -9,6 +9,8 @@ package laundryku;
  *
  * @author Sulthonul Adib
  */
+
+import laundryku.controller.LoginController;
 public class App {
 
     /**
@@ -16,6 +18,7 @@ public class App {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new LoginController();
     }
     
 }
