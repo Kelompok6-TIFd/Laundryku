@@ -20,6 +20,7 @@ import laundryku.model.HomeSuperAdminModel;
 import laundryku.model.Person;
 import laundryku.model.Transaksi;
 import laundryku.view.AddAdminView;
+import laundryku.view.EditAdminView;
 import laundryku.view.HomeSuperAdminView;
 
 /**
@@ -30,6 +31,7 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
     HomeSuperAdminView view;
     HomeSuperAdminModel model;
     AddAdminView addView;
+    EditAdminView editView;
     ArrayList<Transaksi> dafTransaksi = new ArrayList();
     
     public HomeSuperAdminController(String nama) {
@@ -148,6 +150,66 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
         }
     }
     
+    public void updateDataAdmin() {
+        int selectedData = view.getTableAdmin().getSelectedRow();
+        System.out.println(selectedData);
+        
+        if (selectedData == -1) {
+            JOptionPane.showMessageDialog(view, "Silahkan pilih admin yang akan di edit",
+                "Error", JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+        }
+//        String username = editView.getTfUsername();
+//        String password = editView.getTfPassword();
+//        String role = Integer.toString(addView.getCbRole().getSelectedIndex());
+//        String nama = editView.getTfNama();
+//        String alamat = editView.getTfAlamat();
+//        String noTelp = editView.getTfNoTelp();
+//        boolean bgNotNull = editView.getRadioLk().isSelected() || 
+//            editView.getRadioPr().isSelected();
+//        boolean userExist = false;
+//        try {
+//            userExist = model.usernameExist(username).next();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(HomeSuperAdminController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        if (username.equals("") || password.equals("") || nama.equals("")
+//            || alamat.equals("") || noTelp.equals("") || !bgNotNull)
+//            JOptionPane.showMessageDialog(editView, "Lengkapi data",
+//                "Error", JOptionPane.WARNING_MESSAGE);
+//        else {
+//            if (username.length() < 5 || password.length() < 5)
+//                JOptionPane.showMessageDialog(editView, "Username atau password invalid! (min. 5)", 
+//                    "Error", JOptionPane.WARNING_MESSAGE);
+//            else if (nama.length() < 3)
+//                JOptionPane.showMessageDialog(editView, "Nama invalid!", 
+//                    "Error", JOptionPane.WARNING_MESSAGE);
+//            else if (alamat.length() < 3)
+//                JOptionPane.showMessageDialog(editView, "Alamat invalid!", 
+//                    "Error", JOptionPane.WARNING_MESSAGE);
+//            else if (noTelp.length() < 12)
+//                JOptionPane.showMessageDialog(editView, "No. Telp. invalid!", 
+//                    "Error", JOptionPane.WARNING_MESSAGE);
+//            else {
+//                if (userExist){
+////                    JOptionPane.showMessageDialog(editView, "Username sudah ada!", 
+////                    "Error", JOptionPane.WARNING_MESSAGE);
+//                    String jk = editView.getJK();
+//                    Admin a = new Admin(nama,alamat,noTelp,jk,username,password,role,dafTransaksi);
+//                    model.insertAdmin(a);
+//                    JOptionPane.showMessageDialog(editView, "Berhasil mengubah " + nama, 
+//                        "Sukses", JOptionPane.INFORMATION_MESSAGE);
+//                    editView.dispose();
+//                    resetForm();
+//                    showDataAdmin();
+//                } else {
+//                    JOptionPane.showMessageDialog(editView, "Admin tidak ditemukan");
+//                }
+//            }
+//        }
+    }
+    
     private void showDataTransaksi() {
         ArrayList result = model.loadDataTransaksi();
         String kolom[] = {"No Transaksi", "Nama", "Alamat", "No Telp", 
@@ -201,12 +263,40 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
         } else if (source.equals(view.getBtnLogout())) {
             view.dispose();
             new LoginController();
-        } else if (source.equals(addView.getBtnSimpanAdmin())) {
-            addAdmin();
-        } else if (source.equals(addView.getBtnResetAdmin())) 
+        } else  if (source.equals(view.getBtnEdit())) {
+            if (view.getTableAdmin().getSelectedRow() == -1) {
+                JOptionPane.showMessageDialog(view, "Silahkan pilih admin yang akan di edit",
+                "Error", JOptionPane.WARNING_MESSAGE);
+            } else if (view.getTableAdmin().getSelectedRow() != -1) {
+                editView = new EditAdminView();
+                editView.addActionListener(this);
+                editView.setVisible(true);
+            }
+        }  else if (source.equals(editView.getBtnSimpanAdmin())) {
+            updateDataAdmin();
+        } else if (source.equals(editView.getBtnResetAdmin())) {
             resetForm();
-        else if (source.equals(addView.getBtnBack()))
+        } else if (source.equals(editView.getBtnBack())) {
+            editView.dispose();
+        }
+        else if (source.equals(addView.getBtnSimpanAdmin())) {
+            addAdmin();
+        } else if (source.equals(addView.getBtnResetAdmin())) {
+            resetForm();
+        } else if (source.equals(addView.getBtnBack())) {
             addView.dispose();
-    }
-    
+        }
+        
+        if (source.equals(view.getBtnEdit())) {
+            editView = new EditAdminView();
+            editView.addActionListener(this);
+            editView.setVisible(true);
+        }  else if (source.equals(editView.getBtnSimpanAdmin())) {
+            updateDataAdmin();
+        } else if (source.equals(editView.getBtnResetAdmin())) {
+            resetForm();
+        } else if (source.equals(editView.getBtnBack())) {
+            editView.dispose();
+        }       
+    }  
 }

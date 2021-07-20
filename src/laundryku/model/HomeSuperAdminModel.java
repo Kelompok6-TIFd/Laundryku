@@ -69,6 +69,25 @@ public class HomeSuperAdminModel {
         }
     }
     
+    public void updateAdmin(Admin a) {
+        try {
+            String query = "UPDATE tb_admin SET "
+                    + "`username = `" + a.getUsername()
+                    + "`password` = " + a.getPassword()
+                    + "`nama_admin`" + a.getNama()
+                    + "`alamat`" + a.getAlamat()
+                    + "`nama+admin`" + a.getNama()
+                    + "`alamat`" + a.getAlamat()
+                    + "`no_telp`" + a.getNoTelp()
+                    + "`jenis_kelamin`" + a.getJenisKelamin()
+                    + "`role`" + a.getRole();
+            
+            Statement s = con.createStatement();
+            s.execute(query);
+        } catch (SQLException e) {
+        }
+    }
+    
     public ResultSet usernameExist(String username) {
         con = conn.getKoneksi();
         ResultSet rs = null;

@@ -103,6 +103,10 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="btnTambahAdmin" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnEditAdmin" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                              <Component id="btnDeleteAdmin" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -115,7 +119,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="205" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnTambahAdmin" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnTambahAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnDeleteAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnEditAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -144,6 +152,22 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="TAMBAH ADMIN"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTambahAdminActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnDeleteAdmin">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="DELETE ADMIN"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnEditAdmin">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="EDIT ADMIN"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditAdminActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

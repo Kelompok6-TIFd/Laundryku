@@ -118,7 +118,7 @@ public class HomeAdminController extends MouseAdapter implements ActionListener 
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
-              }
+            }
         };
         ArrayList<Transaksi> transaksi = (ArrayList<Transaksi>) result.get(0);
         ArrayList<Person> person = (ArrayList<Person>) result.get(1);

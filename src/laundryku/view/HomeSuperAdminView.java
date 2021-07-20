@@ -68,9 +68,19 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
         return btnTambahAdmin;
     }
     
+    public JButton getBtnEdit() {
+        return btnEditAdmin;
+    }
+    
+    public JButton getBtnDelete() {
+        return btnDeleteAdmin;
+    }
+    
     public void addActionListener(HomeSuperAdminController aThis) {
         btnLogout.addActionListener(aThis);
         btnTambahAdmin.addActionListener(aThis);
+        btnEditAdmin.addActionListener(aThis);
+        btnDeleteAdmin.addActionListener(aThis);
     }
     
     /**
@@ -90,6 +100,8 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableAdmin = new javax.swing.JTable();
         btnTambahAdmin = new javax.swing.JButton();
+        btnDeleteAdmin = new javax.swing.JButton();
+        btnEditAdmin = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePelanggan = new javax.swing.JTable();
@@ -134,6 +146,20 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tableAdmin);
 
         btnTambahAdmin.setText("TAMBAH ADMIN");
+        btnTambahAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahAdminActionPerformed(evt);
+            }
+        });
+
+        btnDeleteAdmin.setText("DELETE ADMIN");
+
+        btnEditAdmin.setText("EDIT ADMIN");
+        btnEditAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditAdminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,7 +171,11 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnTambahAdmin)))
+                        .addComponent(btnTambahAdmin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditAdmin)
+                        .addGap(4, 4, 4)
+                        .addComponent(btnDeleteAdmin)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -154,7 +184,10 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTambahAdmin)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTambahAdmin)
+                    .addComponent(btnDeleteAdmin)
+                    .addComponent(btnEditAdmin))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -262,11 +295,21 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLogoutActionPerformed
 
+    private void btnEditAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditAdminActionPerformed
+
+    private void btnTambahAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTambahAdminActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDeleteAdmin;
+    private javax.swing.JButton btnEditAdmin;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnTambahAdmin;
     private javax.swing.JPanel jPanel1;

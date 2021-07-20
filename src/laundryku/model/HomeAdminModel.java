@@ -31,11 +31,13 @@ public class HomeAdminModel {
         con = conn.getKoneksi();
         ResultSet rs;
         try {
-            String query = "SELECT COUNT(no_transaksi) AS lastID FROM tb_transaksi";
+            String query = "SELECT COUNT(no) AS lastID FROM tb_transaksi";
             Statement s = con.createStatement();
             rs = s.executeQuery(query);
             if (rs.next())
                 return rs.getInt("lastID");
+            else {
+            }
         } catch (SQLException ex) {
             Logger.getLogger(HomeAdminModel.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
