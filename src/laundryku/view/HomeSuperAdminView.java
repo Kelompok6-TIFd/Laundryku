@@ -348,9 +348,9 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
         
         JasperReport jr;
         
-        String fileAllAdmin = "C:\\Users\\fafsdasdfdfs\\Documents\\NetBeansProjects\\LaundryKu\\src\\laundryku\\report\\AllAdmin.jrxml";
-        String fileAllCustomer = "C:\\Users\\fafsdasdfdfs\\Documents\\NetBeansProjects\\LaundryKu\\src\\laundryku\\report\\AllCustomer.jrxml";
-        String fileAllTransaksi = "C:\\Users\\fafsdasdfdfs\\Documents\\NetBeansProjects\\LaundryKu\\src\\laundryku\\report\\AllTransaksi.jrxml";
+        String fileAllAdmin = "./src/laundryku/report/AllAdmin.jrxml";
+        String fileAllCustomer = "./src/laundryku/report/AllCustomer.jrxml";
+        String fileAllTransaksi = "./src/laundryku/report/AllTransaksi.jrxml";
         if (jTabbedPane1.getSelectedIndex() == 0) {
            try {
                jr = JasperCompileManager.compileReport(fileAllAdmin);

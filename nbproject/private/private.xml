@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/fafsdasdfdfs/Documents/NetBeansProjects/LaundryKu/src/laundryku/helper/DBConnection.java</file>
-            <file>file:/C:/Users/fafsdasdfdfs/Documents/NetBeansProjects/LaundryKu/src/laundryku/controller/HomeSuperAdminController.java</file>
-            <file>file:/C:/Users/fafsdasdfdfs/Documents/NetBeansProjects/LaundryKu/src/laundryku/model/HomeSuperAdminModel.java</file>
-            <file>file:/C:/Users/fafsdasdfdfs/Documents/NetBeansProjects/LaundryKu/src/laundryku/controller/HomeAdminController.java</file>
             <file>file:/C:/Users/fafsdasdfdfs/Documents/NetBeansProjects/LaundryKu/src/laundryku/view/HomeAdminView.java</file>
-            <file>file:/C:/Users/fafsdasdfdfs/Documents/NetBeansProjects/LaundryKu/src/laundryku/view/AddAdminView.java</file>
+            <file>file:/C:/Users/fafsdasdfdfs/Documents/NetBeansProjects/LaundryKu/src/laundryku/controller/HomeAdminController.java</file>
             <file>file:/C:/Users/fafsdasdfdfs/Documents/NetBeansProjects/LaundryKu/src/laundryku/model/Login.java</file>
-            <file>file:/C:/Users/fafsdasdfdfs/Documents/NetBeansProjects/LaundryKu/src/laundryku/view/EditAdminView.java</file>
             <file>file:/C:/Users/fafsdasdfdfs/Documents/NetBeansProjects/LaundryKu/src/laundryku/view/HomeSuperAdminView.java</file>
-            <file>file:/C:/Users/fafsdasdfdfs/Documents/NetBeansProjects/LaundryKu/src/laundryku/model/Transaksi.java</file>
             <file>file:/C:/Users/fafsdasdfdfs/Documents/NetBeansProjects/LaundryKu/src/laundryku/view/LoginView.java</file>
             <file>file:/C:/Users/fafsdasdfdfs/Documents/NetBeansProjects/LaundryKu/src/laundryku/model/HomeAdminModel.java</file>
         </group>

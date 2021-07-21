@@ -11,6 +11,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JRootPane;
 import javax.swing.JTable;
@@ -447,7 +448,7 @@ public class HomeAdminView extends javax.swing.JFrame {
 
         btnRefresh.setText("REFRESH");
 
-        btnPrintTransaksi.setText("UPDATE TRANSAKSI");
+        btnPrintTransaksi.setText("PRINT NOTA");
         btnPrintTransaksi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrintTransaksiActionPerformed(evt);
@@ -552,16 +553,28 @@ public class HomeAdminView extends javax.swing.JFrame {
         DBConnection conn = new DBConnection();
         con = conn.getKoneksi();
         
-        try {
-            String file = "./src/laundryku/report/CreateNota.jasper";
-            HashMap parameter = new HashMap();
-            parameter.put("TR", "TR001");
-            
-            JasperPrint jp = JasperFillManager.fillReport(file, parameter, con);
-            JasperViewer.viewReport(jp);
-            
-        } catch (Exception ex) {
-            
+        int selectedRow = this.getTableTransaksi().getSelectedRow();
+        String noTransaksi;
+        
+        if (selectedRow == -1){
+            JOptionPane.showMessageDialog(this, "Pilih Transaksi yang akan dibuat nota!",
+                "Error", JOptionPane.WARNING_MESSAGE);
+//            System.out.println(username);
+        } else {
+            try {
+                noTransaksi = this.getTableTransaksi().getModel().getValueAt(selectedRow, 0).toString();
+                
+                
+                String file = "./src/laundryku/report/CreateNota.jasper";
+                HashMap parameter = new HashMap();
+                parameter.put("TR", noTransaksi);
+
+                JasperPrint jp = JasperFillManager.fillReport(file, parameter, con);
+                JasperViewer.viewReport(jp, false);
+
+            } catch (Exception ex) {
+
+            }
         }
         
     }//GEN-LAST:event_btnPrintTransaksiActionPerformed

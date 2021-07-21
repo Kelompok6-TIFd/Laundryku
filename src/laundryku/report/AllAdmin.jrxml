@@ -46,25 +46,18 @@
 	<title>
 		<band height="136" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="b6554bd5-e44d-41aa-876e-609a23d81637" style="Title" x="270" y="0" width="263" height="62"/>
+				<reportElement uuid="b6554bd5-e44d-41aa-876e-609a23d81637" style="Title" x="277" y="0" width="263" height="62"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Times-Roman"/>
 				</textElement>
-				<text><![CDATA[Coffee Title]]></text>
+				<text><![CDATA[LaundryKu]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="2eab103c-da25-4682-9916-2c0e07880652" style="SubTitle" x="303" y="62" width="196" height="22"/>
+				<reportElement uuid="2eab103c-da25-4682-9916-2c0e07880652" style="SubTitle" x="326" y="62" width="196" height="22"/>
 				<textElement>
 					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
 				</textElement>
-				<text><![CDATA[Coffee SubTitle]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="3175103d-c783-436a-9b49-483e408b10c1" x="172" y="94" width="383" height="42"/>
-				<textElement textAlignment="Right">
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
+				<text><![CDATA[Laporan Data Admin]]></text>
 			</staticText>
 		</band>
 	</title>

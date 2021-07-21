@@ -41,21 +41,14 @@
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Times-Roman"/>
 				</textElement>
-				<text><![CDATA[Coffee Title]]></text>
+				<text><![CDATA[LaundryKu]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="ec2b5ea3-5bcb-4bf6-9b31-87fd22ac2d48" style="SubTitle" x="303" y="62" width="196" height="22"/>
 				<textElement>
 					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
 				</textElement>
-				<text><![CDATA[Coffee SubTitle]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="eb4fb274-f919-47dc-a6cb-322cd1330d6a" x="172" y="94" width="383" height="42"/>
-				<textElement textAlignment="Right">
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
+				<text><![CDATA[Laporan Data Customer]]></text>
 			</staticText>
 		</band>
 	</title>
