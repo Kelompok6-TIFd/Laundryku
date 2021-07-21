@@ -122,7 +122,6 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
         tableAdmin = new javax.swing.JTable();
         btnTambahAdmin = new javax.swing.JButton();
         btnDeleteAdmin = new javax.swing.JButton();
-        btnEditAdmin = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePelanggan = new javax.swing.JTable();
@@ -181,13 +180,6 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
             }
         });
 
-        btnEditAdmin.setText("EDIT ADMIN");
-        btnEditAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditAdminActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -199,9 +191,7 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnTambahAdmin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditAdmin)
-                        .addGap(4, 4, 4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnDeleteAdmin)))
                 .addContainerGap())
         );
@@ -213,8 +203,7 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTambahAdmin)
-                    .addComponent(btnDeleteAdmin)
-                    .addComponent(btnEditAdmin))
+                    .addComponent(btnDeleteAdmin))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -332,10 +321,6 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void btnEditAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditAdminActionPerformed
-
     private void btnTambahAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahAdminActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTambahAdminActionPerformed
@@ -446,7 +431,6 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Print;
     private javax.swing.JButton btnDeleteAdmin;
-    private javax.swing.JButton btnEditAdmin;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnTambahAdmin;
     private javax.swing.JPanel jPanel1;
