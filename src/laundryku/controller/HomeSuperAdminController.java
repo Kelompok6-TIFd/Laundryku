@@ -263,40 +263,41 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
         } else if (source.equals(view.getBtnLogout())) {
             view.dispose();
             new LoginController();
-        } else  if (source.equals(view.getBtnEdit())) {
-            if (view.getTableAdmin().getSelectedRow() == -1) {
-                JOptionPane.showMessageDialog(view, "Silahkan pilih admin yang akan di edit",
-                "Error", JOptionPane.WARNING_MESSAGE);
-            } else if (view.getTableAdmin().getSelectedRow() != -1) {
-                editView = new EditAdminView();
-                editView.addActionListener(this);
-                editView.setVisible(true);
-            }
-        }  else if (source.equals(editView.getBtnSimpanAdmin())) {
-            updateDataAdmin();
-        } else if (source.equals(editView.getBtnResetAdmin())) {
-            resetForm();
-        } else if (source.equals(editView.getBtnBack())) {
-            editView.dispose();
-        }
-        else if (source.equals(addView.getBtnSimpanAdmin())) {
+        } else if (source.equals(addView.getBtnSimpanAdmin())) {
             addAdmin();
         } else if (source.equals(addView.getBtnResetAdmin())) {
             resetForm();
         } else if (source.equals(addView.getBtnBack())) {
             addView.dispose();
         }
+//        else  if (source.equals(view.getBtnEdit())) {
+//            if (view.getTableAdmin().getSelectedRow() == -1) {
+//                JOptionPane.showMessageDialog(view, "Silahkan pilih admin yang akan di edit",
+//                "Error", JOptionPane.WARNING_MESSAGE);
+//            } else if (view.getTableAdmin().getSelectedRow() != -1) {
+//                editView = new EditAdminView();
+//                editView.addActionListener(this);
+//                editView.setVisible(true);
+//            }
+//        }  else if (source.equals(editView.getBtnSimpanAdmin())) {
+//            updateDataAdmin();
+//        } else if (source.equals(editView.getBtnResetAdmin())) {
+//            resetForm();
+//        } else if (source.equals(editView.getBtnBack())) {
+//            editView.dispose();
+//        }
         
-        if (source.equals(view.getBtnEdit())) {
-            editView = new EditAdminView();
-            editView.addActionListener(this);
-            editView.setVisible(true);
-        }  else if (source.equals(editView.getBtnSimpanAdmin())) {
-            updateDataAdmin();
-        } else if (source.equals(editView.getBtnResetAdmin())) {
-            resetForm();
-        } else if (source.equals(editView.getBtnBack())) {
-            editView.dispose();
-        }       
+//        
+//        if (source.equals(view.getBtnEdit())) {
+//            editView = new EditAdminView();
+//            editView.addActionListener(this);
+//            editView.setVisible(true);
+//        }  else if (source.equals(editView.getBtnSimpanAdmin())) {
+//            updateDataAdmin();
+//        } else if (source.equals(editView.getBtnResetAdmin())) {
+//            resetForm();
+//        } else if (source.equals(editView.getBtnBack())) {
+//            editView.dispose();
+//        }       
     }  
 }
