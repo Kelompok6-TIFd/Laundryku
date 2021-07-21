@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import laundryku.model.Admin;
@@ -95,7 +96,7 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
         }
     }
     
-    private void showDataAdmin() {
+    public void showDataAdmin() {
         ArrayList<Admin> dafAdmin = model.loadDataAdmin();
         String kolom[] = {"No.", "Username", "Nama", "Alamat", 
             "No. Telp", "Jenis Kelamin", "Role"};
@@ -151,15 +152,15 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
     }
     
     public void updateDataAdmin() {
-        int selectedData = view.getTableAdmin().getSelectedRow();
-        System.out.println(selectedData);
-        
-        if (selectedData == -1) {
-            JOptionPane.showMessageDialog(view, "Silahkan pilih admin yang akan di edit",
-                "Error", JOptionPane.WARNING_MESSAGE);
-        } else {
-            
-        }
+//        int selectedData = view.getTableAdmin().getSelectedRow();
+//        System.out.println(selectedData);
+//        
+//        if (selectedData == -1) {
+//            JOptionPane.showMessageDialog(view, "Silahkan pilih admin yang akan di edit",
+//                "Error", JOptionPane.WARNING_MESSAGE);
+//        } else {
+//            
+//        }
 //        String username = editView.getTfUsername();
 //        String password = editView.getTfPassword();
 //        String role = Integer.toString(addView.getCbRole().getSelectedIndex());
@@ -251,7 +252,7 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
         addView.setTfUsername("");
         addView.setTfPassword("");
     }
-   
+    
     @Override
     public void actionPerformed(ActionEvent ae) {
         Object source = ae.getSource();
@@ -269,8 +270,9 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
             resetForm();
         } else if (source.equals(addView.getBtnBack())) {
             addView.dispose();
-        }
-//        else  if (source.equals(view.getBtnEdit())) {
+        } 
+//        
+//          if (source.equals(view.getBtnEdit())) {
 //            if (view.getTableAdmin().getSelectedRow() == -1) {
 //                JOptionPane.showMessageDialog(view, "Silahkan pilih admin yang akan di edit",
 //                "Error", JOptionPane.WARNING_MESSAGE);
@@ -286,7 +288,7 @@ public class HomeSuperAdminController extends MouseAdapter implements ActionList
 //        } else if (source.equals(editView.getBtnBack())) {
 //            editView.dispose();
 //        }
-        
+//        
 //        
 //        if (source.equals(view.getBtnEdit())) {
 //            editView = new EditAdminView();

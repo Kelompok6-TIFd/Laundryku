@@ -293,7 +293,7 @@ public class EditAdminView extends javax.swing.JFrame {
         btnResetAdmin.setText("RESET");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Tambah Admin");
+        jLabel1.setText("Edit Admin");
 
         btnBackAddAdmin.setText("BACK");
 
@@ -386,4 +386,8 @@ public class EditAdminView extends javax.swing.JFrame {
     private javax.swing.JTextField tfPassword;
     private javax.swing.JTextField tfUsername;
     // End of variables declaration//GEN-END:variables
+
+    public void addActionListener() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -69,6 +69,16 @@ public class HomeSuperAdminModel {
         }
     }
     
+    public void deleteAdmin(int idAdmin) {
+        try {
+            String query = "DELETE admin where id = " + idAdmin;
+            Statement s = con.createStatement();
+            s.execute(query);
+        } catch (SQLException se) {
+            Logger.getLogger(HomeSuperAdminModel.class.getName()).log(Level.SEVERE, null, se);
+        }
+    }
+    
     public void updateAdmin(Admin a) {
         try {
             String query = "UPDATE tb_admin SET "

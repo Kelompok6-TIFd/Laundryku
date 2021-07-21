@@ -7,17 +7,34 @@ package laundryku.view;
 
 
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.event.ChangeListener;
+import javax.swing.table.DefaultTableModel;
 import laundryku.controller.HomeSuperAdminController;
 import laundryku.controller.LoginController;
+import laundryku.helper.DBConnection;
+import laundryku.model.Admin;
+import laundryku.model.HomeSuperAdminModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -28,6 +45,10 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
     /**
      * Creates new form HomeView
      */
+    
+    HomeSuperAdminModel model;
+    HomeSuperAdminController controller;
+    
     public HomeSuperAdminView() {
         initComponents();
     }
@@ -68,19 +89,19 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
         return btnTambahAdmin;
     }
     
-    public JButton getBtnEdit() {
-        return btnEditAdmin;
-    }
-    
-    public JButton getBtnDelete() {
-        return btnDeleteAdmin;
-    }
+//    public JButton getBtnEdit() {
+//        return btnEditAdmin;
+//    }
+//    
+//    public JButton getBtnDelete() {
+//        return btnDeleteAdmin;
+//    }
     
     public void addActionListener(HomeSuperAdminController aThis) {
         btnLogout.addActionListener(aThis);
         btnTambahAdmin.addActionListener(aThis);
-        btnEditAdmin.addActionListener(aThis);
-        btnDeleteAdmin.addActionListener(aThis);
+//        btnEditAdmin.addActionListener(aThis);
+//        btnDeleteAdmin.addActionListener(aThis);
     }
     
     /**
@@ -108,6 +129,7 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableTransaksi = new javax.swing.JTable();
+        Print = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dashboard");
@@ -136,7 +158,7 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                true, true, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -153,6 +175,11 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
         });
 
         btnDeleteAdmin.setText("DELETE ADMIN");
+        btnDeleteAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteAdminActionPerformed(evt);
+            }
+        });
 
         btnEditAdmin.setText("EDIT ADMIN");
         btnEditAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +195,7 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnTambahAdmin)
@@ -212,7 +239,7 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -244,8 +271,7 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,6 +283,14 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Data Transaksi", jPanel6);
 
+        Print.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Print.setText("PRINT");
+        Print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrintActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -267,7 +301,9 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(labelHi, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(92, 92, 92)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Print, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -279,10 +315,11 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelHi, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLogout))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btnLogout)
+                    .addComponent(Print, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -303,11 +340,111 @@ public class HomeSuperAdminView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTambahAdminActionPerformed
 
+    private void PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintActionPerformed
+        // TODO add your handling code here:
+        Connection con;
+        DBConnection conn = new DBConnection();
+        con = conn.getKoneksi();
+        
+        JasperReport jr;
+        
+        String fileAllAdmin = "C:\\Users\\fafsdasdfdfs\\Documents\\NetBeansProjects\\LaundryKu\\src\\laundryku\\report\\AllAdmin.jrxml";
+        String fileAllCustomer = "C:\\Users\\fafsdasdfdfs\\Documents\\NetBeansProjects\\LaundryKu\\src\\laundryku\\report\\AllCustomer.jrxml";
+        String fileAllTransaksi = "C:\\Users\\fafsdasdfdfs\\Documents\\NetBeansProjects\\LaundryKu\\src\\laundryku\\report\\AllTransaksi.jrxml";
+        if (jTabbedPane1.getSelectedIndex() == 0) {
+           try {
+               jr = JasperCompileManager.compileReport(fileAllAdmin);
+               JasperPrint jp = JasperFillManager.fillReport(jr, null, con);
+               JasperViewer.viewReport(jp, false);
+           } catch (JRException e) {
+               Logger.getLogger(HomeSuperAdminView.class.getName()).log(Level.SEVERE, null, e);
+           }
+        } else if (jTabbedPane1.getSelectedIndex() == 1) {
+                       try {
+               jr = JasperCompileManager.compileReport(fileAllCustomer);
+               JasperPrint jp = JasperFillManager.fillReport(jr, null, con);
+               JasperViewer.viewReport(jp, false);
+           } catch (JRException e) {
+               Logger.getLogger(HomeSuperAdminView.class.getName()).log(Level.SEVERE, null, e);
+           }
+        } else if (jTabbedPane1.getSelectedIndex() == 2) {
+                       try {
+               jr = JasperCompileManager.compileReport(fileAllTransaksi);
+               JasperPrint jp = JasperFillManager.fillReport(jr, null, con);
+               JasperViewer.viewReport(jp, false);
+           } catch (JRException e) {
+               Logger.getLogger(HomeSuperAdminView.class.getName()).log(Level.SEVERE, null, e);
+           }
+        }
+    }//GEN-LAST:event_PrintActionPerformed
+
+    private void btnDeleteAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAdminActionPerformed
+        // TODO add your handling code here:
+        Connection con;
+        DBConnection conn = new DBConnection();
+        con = conn.getKoneksi();
+        
+        int selectedRow = this.getTableAdmin().getSelectedRow();
+        String username;
+        
+//        System.out.println(username);
+        if (selectedRow == -1){
+            JOptionPane.showMessageDialog(this, "Pilih admin yang akan di hapus terlebih dahulu",
+                "Error", JOptionPane.WARNING_MESSAGE);
+//            System.out.println(username);
+            
+        } else  {
+            username = this.getTableAdmin().getModel().getValueAt(selectedRow, 1).toString();
+            try {
+                String query = "DELETE from tb_admin "+ " where username = '" + username + "'";
+                System.out.println(query);
+                Statement s = con.createStatement();
+                s.execute(query);
+                JOptionPane.showMessageDialog(this, "Admin berhasil di hapus",
+                        "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                DefaultTableModel newModel = (DefaultTableModel)this.getTableAdmin().getModel();
+                newModel.removeRow(selectedRow);
+                
+            } catch (SQLException se) {
+//                Logger.getLogger(HomeSuperAdminModel.class.getName()).log(Level.SEVERE, null, se);
+                System.out.println(se);
+            }
+        }
+    }//GEN-LAST:event_btnDeleteAdminActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
+    public DefaultTableModel showDataAdmin() {
+        ArrayList<Admin> dafAdmin = model.loadDataAdmin();
+        String kolom[] = {"No.", "Username", "Nama", "Alamat", 
+            "No. Telp", "Jenis Kelamin", "Role"};
+        DefaultTableModel dtm = new DefaultTableModel(null, kolom) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex) {
+                return false;
+              }
+        };
+        for (int i = 0; i < dafAdmin.size(); i++) {
+            String no = Integer.toString((i+1));
+            String username = dafAdmin.get(i).getUsername();
+            String nama = dafAdmin.get(i).getNama();
+            String alamat = dafAdmin.get(i).getAlamat();
+            String noTelp = dafAdmin.get(i).getNoTelp();
+            String jk = dafAdmin.get(i).getJenisKelamin();
+            String role;
+            if (dafAdmin.get(i).getRole().equals("1"))
+                role = "Super Admin";
+            else
+                role = "Admin";
+            String data[] = {no,username,nama,alamat,noTelp,jk,role};
+            dtm.addRow(data);
+        }
+        return dtm;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Print;
     private javax.swing.JButton btnDeleteAdmin;
     private javax.swing.JButton btnEditAdmin;
     private javax.swing.JButton btnLogout;
